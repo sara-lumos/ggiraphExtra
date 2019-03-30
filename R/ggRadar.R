@@ -204,7 +204,7 @@ if(rescale) data=rescale_df(data,groupvar)
                 df[[id2]]="all"
                 id3=newColName(df)
                 df[[id3]]=1:nrow(df)
-                df$tooltip=paste0(df$variable,"=",round(df$value,1))
+                df$tooltip=paste0(round(df$value,1))
                 df$tooltip2=paste0("all")
                 #str(df)
                 p<-ggplot(data=df,aes_string(x="variable",y="value",group=1))+
@@ -219,8 +219,8 @@ if(rescale) data=rescale_df(data,groupvar)
                 }
                 id3=newColName(df)
                 df[[id3]]=1:nrow(df)
-                df$tooltip=paste0(groupvar,"=",df[[colorname]],"<br>",df$variable,"=",round(df$value,1))
-                df$tooltip2=paste0(groupvar,"=",df[[colorname]])
+                df$tooltip=paste0(df[[colorname]],":<br>",round(df$value,1))
+                df$tooltip2=paste0(df[[colorname]])
                 #str(df)
                 p<-ggplot(data=df,aes_string(x="variable",y="value",colour=colorname,fill=colorname,group=colorname))+
                         geom_polygon_interactive(aes_string(tooltip="tooltip2"),alpha=alpha)+
